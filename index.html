@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,702 +8,251 @@
     <!-- Modern Font: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-primary: #0F0F11;     /* Deep Black/Gray */
-            --color-primary-light: #1A1A1E;
-            --color-accent: #D4AF37;      /* Classic Gold */
-            --color-accent-hover: #F2C94C;
-            --color-text-main: #2A2A2A;
-            --color-text-muted: #666666;
-            --color-bg: #F8F9FA;
-            --color-surface: #FFFFFF;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Reusable Classes */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--color-accent);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--color-accent);
-            color: var(--color-surface);
-            background: transparent;
-        }
-        
-        .btn-outline:hover {
-            background: var(--color-accent);
-            color: var(--color-primary);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 5%;
-            background: rgba(15, 15, 17, 0.85);
-            backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--color-surface);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .logo span {
-            color: var(--color-accent);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--color-surface);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--color-accent);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--color-accent);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn {
-            background-color: var(--color-accent);
-            color: var(--color-primary) !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .nav-btn::after { display: none; }
-        .nav-btn:hover {
-            background-color: var(--color-accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 5%;
-            background: linear-gradient(to bottom, rgba(15, 15, 17, 0.7), rgba(15, 15, 17, 0.95)), url('assets/hero_background_1777515129200.png') center/cover no-repeat;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            animation: fadeInDown 1s ease-out forwards;
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--color-surface);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero h2 span {
-            color: var(--color-accent);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-inline: auto;
-        }
-
-        /* Quem Somos */
-        .quem-somos {
-            padding: 6rem 5%;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            background-color: var(--color-surface);
-        }
-
-        .quem-somos-img {
-            flex: 1;
-            position: relative;
-        }
-
-        .quem-somos-img img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
-        }
-
-        .quem-somos-img::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--color-accent);
-            border-radius: 8px;
-            z-index: 0;
-        }
-        
-        .quem-somos-img img {
-            position: relative;
-            z-index: 1;
-        }
-
-        .quem-somos-texto {
-            flex: 1;
-        }
-
-        .quem-somos-texto h2 {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .quem-somos-texto p {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .stats-container {
-            display: flex;
-            gap: 3rem;
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            color: var(--color-accent);
-            line-height: 1;
-        }
-
-        .stat-item p {
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 0;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Serviços */
-        .servicos {
-            padding: 6rem 5%;
-            background-color: var(--color-bg);
-        }
-
-        .grid-servicos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card-servico {
-            background-color: var(--color-surface);
-            padding: 2.5rem 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-bottom: 4px solid transparent;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card-servico:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
-            border-bottom-color: var(--color-accent);
-        }
-
-        .card-servico h3 {
-            font-size: 1.25rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-        }
-
-        .card-servico p {
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .card-servico a {
-            color: var(--color-accent);
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
-        }
-
-        .card-servico a:hover {
-            gap: 8px;
-        }
-
-        /* Equipe */
-        .equipe {
-            padding: 6rem 5%;
-            background-color: var(--color-surface);
-        }
-
-        .grid-equipe {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .membro {
-            text-align: center;
-            background: var(--color-bg);
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .membro:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .membro-foto {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem auto;
-            border: 4px solid var(--color-surface);
-            box-shadow: 0 0 0 2px var(--color-accent);
-            overflow: hidden;
-            background-color: #ddd;
-        }
-
-        .membro-foto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .membro h4 {
-            font-size: 1.2rem;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .membro p {
-            font-size: 0.9rem;
-            color: var(--color-accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Depoimentos */
-        .depoimentos {
-            padding: 6rem 5%;
-            background-color: var(--color-primary);
-            color: var(--color-surface);
-        }
-        
-        .depoimentos .section-title {
-            color: var(--color-surface);
-        }
-
-        .grid-depoimentos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card-depoimento {
-            background-color: var(--color-primary-light);
-            padding: 2.5rem;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .card-depoimento::before {
-            content: '"';
-            font-size: 5rem;
-            color: rgba(212, 175, 55, 0.2);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: serif;
-            line-height: 1;
-        }
-
-        .card-depoimento p {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-            font-size: 1.05rem;
-        }
-
-        .autor-depoimento {
-            font-weight: 600;
-            color: var(--color-accent);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .autor-depoimento::before {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background-color: var(--color-accent);
-        }
-
-        /* WhatsApp Section */
-        .whatsapp-section {
-            padding: 6rem 5%;
-            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-            color: var(--color-surface);
-            text-align: center;
-        }
-
-        .whatsapp-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .whatsapp-section p {
-            font-size: 1.15rem;
-            max-width: 800px;
-            margin: 0 auto 1.5rem auto;
-            opacity: 0.9;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            padding: 16px 36px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: var(--transition);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0A0A0C;
-            color: rgba(255,255,255,0.7);
-            padding: 4rem 5% 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--color-surface);
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-        }
-        .footer-logo span { color: var(--color-accent); }
-
-        .info-contato p {
-            margin: 8px 0;
-            font-size: 1rem;
-        }
-        
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .quem-somos { flex-direction: column; }
-            .hero h2 { font-size: 2.8rem; }
-        }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 1rem; padding: 1rem; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 1rem; }
-            .hero h2 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
-            .stats-container { flex-direction: column; gap: 1.5rem; text-align: center; }
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
         <div class="logo">
-            <h1>Barros <span>Advocacia</span></h1>
+            <img src="assets/extracted_images/logo.png" alt="Barros Advocacia" style="max-height: 60px;">
         </div>
         <nav>
             <ul>
-                <li><a href="#quem-somos">Quem somos</a></li>
+                <li><a href="#quem-somos" class="active">Quem somos</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#equipe">Equipe</a></li>
                 <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato" class="btn btn-primary nav-btn">Agende sua consulta</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#contato" class="btn nav-btn">Agende sua consulta</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h2>Somos referência em <span>Benefícios do INSS</span>.</h2>
-            <p>A Barros Advocacia é um escritório com mais de 15 anos de atuação exclusiva na área previdenciária, lutando pelos seus direitos.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#contato" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 32px;">Fale com um especialista</a>
-                <a href="#servicos" class="btn btn-outline" style="font-size: 1.1rem; padding: 16px 32px;">Conheça nossos serviços</a>
-            </div>
+            <h2>Barros Advocacia:</h2>
+            <h3>Somos referência em Benefícios do INSS.</h3>
+            <p>A Barros Advocacia é um escritório com mais de 15 anos de atuação exclusiva na área previdenciária
+                (INSS).</p>
+            <a href="#contato" class="btn btn-primary">Fale com um
+                especialista</a>
+        </div>
+        <div class="hero-img">
+            <!-- Imagem collage extraída do PDF -->
+            <img src="./assets/extracted_images/hero.jpeg" alt="">
         </div>
     </section>
 
     <section id="quem-somos" class="quem-somos">
-        <div class="quem-somos-img">
-            <img src="assets/office_lawyer_1777515142858.png" alt="Escritório Barros Advocacia">
-        </div>
         <div class="quem-somos-texto">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Quem somos</h2>
-            <p>Assim como na medicina, na advocacia não há mais espaço para profissionais sem especialidade, que atuam como generalistas. Após a Reforma da Previdência e com as constantes mudanças na legislação previdenciária, o mercado exige advogados com conhecimento profundo e com experiência comprovada nesta relevante área.</p>
-            <p>Nosso escritório atua exclusivamente nas causas contra o INSS há mais de 15 anos, ajudando milhares de pessoas na conquista dos seus benefícios.</p>
-            
+            <h2 class="section-title" style="text-align: left;">Quem somos:</h2>
+            <p>Assim como na medicina, na advocacia não há mais espaço para profissionais sem especialidade, que atuam
+                como generalistas. Após a Reforma da Previdência e com as constantes mudanças na legislação
+                previdenciária, o mercado exige advogados com conhecimento profundo e com experiência comprovada nesta
+                relevante área.</p>
+
             <div class="stats-container">
-                <div class="stat-item">
-                    <h3>15+</h3>
-                    <p>Anos de Experiência</p>
+                <div class="stat-number">
+                    15+
+                    <span>Anos</span>
                 </div>
-                <div class="stat-item">
-                    <h3>10k+</h3>
-                    <p>Casos Atendidos</p>
+                <div class="stat-text">
+                    Nosso escritório atua exclusivamente nas causas contra o INSS há mais de 15 anos, ajudando milhares
+                    de pessoas na conquista dos seus benefícios.
                 </div>
             </div>
+        </div>
+        <div class="quem-somos-img">
+            <!-- Imagem do escritório extraída (assumindo img-010 ou 006) -->
+            <img src="assets/extracted_images/qmsomos.jpg" alt="Douglas e Keila no Escritório Barros Advocacia">
         </div>
     </section>
 
     <section id="servicos" class="servicos">
         <h2 class="section-title">Nossos Serviços</h2>
-        <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -1.5rem auto 0 auto;">Especialistas em buscar os melhores benefícios do INSS para você e sua família.</p>
-        
+        <h3 class="section-subtitle">Especialistas em Benefícios do INSS</h3>
+
         <div class="grid-servicos">
+            <!-- Cartão 1 -->
             <div class="card-servico">
-                <div>
-                    <h3>Aposentadoria por Idade</h3>
-                    <p>Garantimos que todos os seus tempos de contribuição sejam devidamente computados.</p>
+                <div class="icon-wrapper">
+                    <!-- Placeholder SVG para Ícone (Aposentadoria Idade) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Aposentadoria por Idade</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
+            <!-- Cartão 2 -->
             <div class="card-servico">
-                <div>
-                    <h3>Aposentadoria Especial</h3>
-                    <p>Análise completa de agentes nocivos para antecipar sua aposentadoria.</p>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Aposentadoria Especial</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
+            <!-- Cartão 3 -->
             <div class="card-servico">
-                <div>
-                    <h3>Aposentadoria por Invalidez</h3>
-                    <p>Apoio jurídico e orientação para laudos e perícias do INSS.</p>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                        </path>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Aposentadoria por Invalidez</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
+            <!-- Cartão 4 -->
             <div class="card-servico">
-                <div>
-                    <h3>Auxílio-Doença</h3>
-                    <p>Agilidade para que você não fique desamparado no momento que mais precisa.</p>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                        <path d="M8 14h.01"></path>
+                        <path d="M12 14h.01"></path>
+                        <path d="M16 14h.01"></path>
+                        <path d="M8 18h.01"></path>
+                        <path d="M12 18h.01"></path>
+                        <path d="M16 18h.01"></path>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Auxílio-Doença</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
+            <!-- Cartão 5 -->
             <div class="card-servico">
-                <div>
-                    <h3>Auxílio-Acidente</h3>
-                    <p>Indenização mensal para quem sofreu acidente de qualquer natureza.</p>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Auxílio-Acidente</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
+            <!-- Cartão 6 -->
             <div class="card-servico">
-                <div>
-                    <h3>BPC-LOAS</h3>
-                    <p>Benefício assistencial para idosos e pessoas com deficiência de baixa renda.</p>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
                 </div>
-                <a href="#contato">Saiba mais &rarr;</a>
+                <h3>Pente-fino do INSS</h3>
+                <a href="#contato">Saiba mais</a>
+            </div>
+            <!-- Cartão 7 -->
+            <div class="card-servico">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>BPC-LOAS</h3>
+                <a href="#contato">Saiba mais</a>
+            </div>
+            <!-- Cartão 8 -->
+            <div class="card-servico">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                </div>
+                <h3>Pensão por Morte</h3>
+                <a href="#contato">Saiba mais</a>
+            </div>
+            <!-- Cartão 9 -->
+            <div class="card-servico">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Salário Maternidade</h3>
+                <a href="#contato">Saiba mais</a>
             </div>
         </div>
     </section>
 
     <section id="equipe" class="equipe">
-        <h2 class="section-title">Nossa Equipe</h2>
+        <h2 class="section-title">Equipe</h2>
         <div class="grid-equipe">
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/male_lawyer_headshot_1777515157205.png" alt="Douglas Barros">
+                    <img src="assets/extracted_images/DouglasBarros.jpg" alt="Douglas Barros">
                 </div>
                 <h4>Douglas Barros</h4>
                 <p>Advogado</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Keila Nogueira">
+                    <img src="assets/extracted_images/keila.jpg" alt="Keila Nogueira">
                 </div>
                 <h4>Keila Nogueira</h4>
                 <p>Advogada</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Sthefane Silva">
+                    <img src="assets/extracted_images/sthefane.jpg" alt="Sthefane Silva">
                 </div>
                 <h4>Sthefane Silva</h4>
                 <p>Coordenadora</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Emilly Kamilly">
+                    <img src="assets/extracted_images/emilly.jpg" alt="Emilly Kamilly">
                 </div>
                 <h4>Emilly Kamilly</h4>
                 <p>Assistente Jurídica</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Camila Rodrigues">
+                    <img src="assets/extracted_images/camila.jpg" alt="Camila Rodrigues">
                 </div>
                 <h4>Camila Rodrigues</h4>
                 <p>Setor Comercial</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Louise Beatriz">
+                    <img src="assets/extracted_images/louise.jpg" alt="Louise Beatriz">
                 </div>
                 <h4>Louise Beatriz</h4>
                 <p>Assistente Jurídica</p>
             </div>
             <div class="membro">
                 <div class="membro-foto">
-                    <img src="assets/female_lawyer_headshot_1777515170839.png" alt="Beatriz Saraiva">
+                    <img src="assets/extracted_images/beatriz.jpg" alt="Beatriz Saraiva">
                 </div>
                 <h4>Beatriz Saraiva</h4>
                 <p>Secretária</p>
@@ -711,55 +261,148 @@
     </section>
 
     <section id="depoimentos" class="depoimentos">
-        <h2 class="section-title">O que dizem sobre nós</h2>
+        <h2 class="section-title">Confira o que os nossos clientes e parceiros dizem sobre a Barros Advocacia:</h2>
         <div class="grid-depoimentos">
             <div class="card-depoimento">
-                <p>Neste você pode confiar dedicação e honestidade. Eu confio sempre.</p>
-                <div class="autor-depoimento">Joseli Palagi</div>
+                <div class="conteudo-depoimento">
+                    <p>"Neste você pode confiar, dedicação e honestidade. Eu confio sempre."</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-025.png" alt="Joseli Palagi">
+                    </div>
+                    <div class="autor-depoimento">Joseli Palagi</div>
+                </div>
             </div>
             <div class="card-depoimento">
-                <p>Experiência maravilhosa atendimento incrível e ambiente agradável!</p>
-                <div class="autor-depoimento">Giovana Marinho</div>
+                <div class="conteudo-depoimento">
+                    <p>"Experiência maravilhosa, atendimento incrível e ambiente agradável!"</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-026.png" alt="Giovana Marinho">
+                    </div>
+                    <div class="autor-depoimento">Giovana Marinho</div>
+                </div>
             </div>
             <div class="card-depoimento">
-                <p>Muito ótima uma excelência no atendimento advocatio</p>
-                <div class="autor-depoimento">Jimmy Karol</div>
+                <div class="conteudo-depoimento">
+                    <p>"Muito ótima, uma excelência no atendimento advocatio."</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-027.png" alt="Jimmy Karol">
+                    </div>
+                    <div class="autor-depoimento">Jimmy Karol</div>
+                </div>
             </div>
             <div class="card-depoimento">
-                <p>Maravilhoso meu beneficio foi concedido em menos de 15 dias. Barros Advocacia está de parabéns. Obrigada pelo profissionalismo estou muito feliz!</p>
-                <div class="autor-depoimento">Cida Souza</div>
+                <div class="conteudo-depoimento">
+                    <p>"Maravilhoso, meu benefício foi concedido, em menos de 15 dias. Barros Advocacia está de
+                        parabéns, Obrigada pelo profissionalismo, estou muito feliz!"</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-028.png" alt="Cida Souza">
+                    </div>
+                    <div class="autor-depoimento">Cida Souza</div>
+                </div>
             </div>
             <div class="card-depoimento">
-                <p>Ótimos profissionais fazem todo o possível para ajudar...</p>
-                <div class="autor-depoimento">Julia Izadora Rocha</div>
+                <div class="conteudo-depoimento">
+                    <p>"Minha família já estava sem esperanças com nossa causa, Dr. Douglas e sua equipe fizeram todo o
+                        possível para nos ajudar e assim conseguiram o que almejávamos, sem contar toda a educação e
+                        preparo da sua equipe. Retornaríamos, sem dúvidas."</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-029.png" alt="Julia Izadora Rocha">
+                    </div>
+                    <div class="autor-depoimento">Julia Izadora Rocha</div>
+                </div>
             </div>
             <div class="card-depoimento">
-                <p>Gostei muito da minha experiência com vocês, conseguiram solucionar o meu problema. Grata</p>
-                <div class="autor-depoimento">Adriellen Vieira</div>
+                <div class="conteudo-depoimento">
+                    <p>"Gostei muito da minha experiência com vocês, conseguiram solucionar o meu problema. Grata."</p>
+                </div>
+                <div class="card-depoimento-footer">
+                    <div class="avatar-depoimento">
+                        <img src="assets/extracted_images/img-030.png" alt="Adriellen Vieira">
+                    </div>
+                    <div class="autor-depoimento">Adriellen Vieira</div>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="whatsapp-section">
-        <h2>Atendimento Online via WhatsApp</h2>
-        <p>Contratar um advogado previdenciário pelo WhatsApp pode facilitar e muito a sua vida. Hoje não é mais necessário limitar sua busca ao seu município.</p>
-        <p>O atendimento é prático e seguro. Explicaremos com calma todos os detalhes da sua situação e daremos orientações claras sobre seus direitos.</p>
-        <a href="https://wa.me/5599991012021" class="btn-whatsapp">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-            </svg>
-            Fale com um advogado online
-        </a>
+        <div class="whatsapp-texto">
+            <h2>Como um Advogado Previdenciário pode ajudar você pelo WhatsApp</h2>
+            <p>Contratar um advogado previdenciário pelo WhatsApp pode facilitar — e muito — a sua vida, especialmente
+                quando você tem dificuldade para encontrar um especialista na sua cidade ou não sabe por onde começar.
+            </p>
+            <p>Hoje, não é mais necessário limitar sua busca ao seu município. Pelo WhatsApp, você consegue falar
+                diretamente com um profissional especializado na área previdenciária, tirar dúvidas iniciais e entender
+                quais são os próximos passos para resolver o seu caso.</p>
+            <p>Além disso, o atendimento pode ser feito de forma prática e segura por e-mail e por videochamada. As
+                reuniões online são, inclusive, muito recomendadas. Elas permitem que você explique com calma todos os
+                detalhes da sua situação, envie documentos e receba orientações claras sobre seus direitos.</p>
+            <p class="highlight">A tecnologia veio para aproximar — e garantir que você tenha acesso ao especialista
+                certo, onde quer que esteja.</p>
+            <br>
+            <a href="https://wa.me/5599991012021" class="btn btn-primary">
+                Fale com um advogado previdenciário online
+            </a>
+        </div>
+        <div class="whatsapp-img">
+            <img src="assets/extracted_images/img-031.jpg" alt="Fachada Escritório Barros Advocacia">
+        </div>
     </section>
 
     <footer id="contato">
         <div class="footer-logo">
-            Barros <span>Advocacia</span>
+            <div class="logo-b">B</div>
+            <div class="logo-text">
+                <span>Barros</span>
+                <span>Advocacia</span>
+            </div>
         </div>
         <div class="info-contato">
-            <p>Rua São Luís 578, Açailândia, MA | 65930-000</p>
-            <p>Telefone / WhatsApp: (99) 99101-2021</p>
-            <p>Email: barrosadvocaciaa@gmail.com</p>
+            <div class="info-item">
+                <span>Rua São Luís 578, Açailândia, MA 65930-000</span>
+            </div>
+            <div class="info-item">
+                <span style="color: var(--color-accent);">Telefone - Whatsapp</span>
+                <br>
+                <span>(99) 99101-2021</span>
+            </div>
+            <div class="info-item">
+                <span style="color: var(--color-accent);">Email</span>
+                <br>
+                <span>barrosadvocaciaa@gmail.com</span>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="####" aria-label="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                </svg>
+            </a>
+            <a href="####" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="####" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </a>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Barros Advocacia. Todos os direitos reservados.</p>
@@ -767,4 +410,5 @@
     </footer>
 
 </body>
+
 </html>
