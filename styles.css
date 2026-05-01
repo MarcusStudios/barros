@@ -296,10 +296,13 @@
 
         .quem-somos-img {
             flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .quem-somos-img img {
             width: 100%;
+            max-width: 600px;
             border-radius: 16px 140px 16px 16px;
             box-shadow: var(--shadow-lg);
         }
@@ -595,6 +598,14 @@
                 text-align: center;
             }
 
+            .hero h2 {
+                font-size: 3.8rem;
+            }
+
+            .hero h3 {
+                font-size: 2.5rem;
+            }
+
             .hero-img {
                 margin-top: 3rem;
                 justify-content: center;
@@ -642,6 +653,10 @@
 
             .membro {
                 width: calc(50% - 1.5rem);
+            }
+
+            .quem-somos-img img {
+                border-radius: 12px 80px 12px 12px;
             }
 
             .info-contato {
