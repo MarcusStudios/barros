@@ -1,4 +1,9 @@
-        :root {
+        /* ======================================================================= */
+/* VARIÁVEIS E CORES (A paleta de maquiagem do site)                       */
+/* Aqui a gente define as cores que vamos usar no site todo. Se quiser     */
+/* mudar o dourado pra rosa, é só mudar aqui!                              */
+/* ======================================================================= */
+:root {
             --color-primary: #111111;
             /* Dark Text */
             --color-accent: #B88A44;
@@ -16,13 +21,21 @@
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
-        * {
+        /* ======================================================================= */
+/* RESET GERAL (Zerando a bagunça padrão do navegador)                     */
+/* Isso tira todas as margens chatas que os navegadores botam sozinhos     */
+/* ======================================================================= */
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        /* ======================================================================= */
+/* CORPO DO SITE (A base de tudo)                                          */
+/* Define a fonte de texto padrão e a cor de fundo de tudo.                */
+/* ======================================================================= */
+body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text-main);
@@ -655,6 +668,10 @@
             transform: translateY(-9px) rotate(-45deg);
         }
 
+        /* ======================================================================= */
+        /* RESPONSIVIDADE (A mágica que faz o site caber no celular)               */
+        /* Aqui a gente avisa: "Se a tela for de celular, espreme tudo pra caber!" */
+        /* ======================================================================= */
         /* Responsive */
         @media (max-width: 992px) {
             .hero {
@@ -676,7 +693,11 @@
                 justify-content: center;
             }
 
-            .quem-somos,
+            /* ======================================================================= */
+        /* SEÇÃO QUEM SOMOS E SERVIÇOS (As caixinhas de informação)                */
+        /* Define como o texto vai ficar do lado da imagem sem quebrar tudo        */
+        /* ======================================================================= */
+        .quem-somos,
             .whatsapp-section {
                 flex-direction: column;
                 text-align: center;
