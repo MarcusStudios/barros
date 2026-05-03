@@ -194,62 +194,102 @@ body {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #FFFFFF;
+            background: linear-gradient(135deg, #FCFAF5 0%, #F5F0E6 100%);
             position: relative;
             overflow: hidden;
         }
 
-
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(184, 138, 68, 0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
         .hero-content {
             flex: 1;
             max-width: 600px;
             position: relative;
             z-index: 1;
+            animation: slideUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h2 {
             font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #B88A44 0%, #E6C587 30%, #966F33 100%);
+            font-weight: 800;
+            background: linear-gradient(to right, #B88A44 0%, #D4AF37 50%, #966F33 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
             line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .hero h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 500;
-            color: #111111;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #1A1A1A;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--color-text-main);
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
             margin-bottom: 2.5rem;
             max-width: 500px;
+            line-height: 1.7;
         }
         
-
-
         .hero-img {
             flex: 1;
             display: flex;
             justify-content: flex-end;
             position: relative;
             z-index: 1;
+            margin-top: 4rem;
+            animation: fadeInRight 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .hero-img img {
             max-width: 100%;
             height: auto;
-            object-fit: contain;
+            object-fit: cover;
             max-height: 600px;
+            border-radius: 24px 120px 24px 24px;
+            box-shadow: var(--shadow-lg), 0 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+        }
+
+        .hero-img img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         /* Quem Somos */
@@ -465,6 +505,21 @@ body {
             align-items: flex-start;
             gap: 1.5rem;
             box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-depoimento::before {
+            content: '\201D';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 8rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(184, 138, 68, 0.1);
+            line-height: 0.8;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .avatar-depoimento {
@@ -473,6 +528,8 @@ body {
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
+            position: relative;
+            z-index: 2;
         }
 
         .avatar-depoimento img {
@@ -484,12 +541,21 @@ body {
         .conteudo-depoimento {
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stars {
+            color: #E6C587;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
         }
 
         .conteudo-depoimento p {
             font-size: 1rem;
             color: var(--color-text-main);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
