@@ -265,6 +265,7 @@ body {
             position: relative;
             z-index: 1;
             margin-top: 4rem;
+            margin-right: 3rem;
             animation: fadeInRight 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
             opacity: 0;
             transform: translateX(30px);
@@ -757,6 +758,7 @@ body {
             .hero-img {
                 margin-top: 3rem;
                 justify-content: center;
+                margin-right: 0;
             }
 
             /* ======================================================================= */
